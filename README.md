@@ -39,9 +39,8 @@ The network consists of:
    - verify that you can SSH to the public IP of the `controller-0` instance
 1. Follow the steps in [KTHW Lab 4](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md), 
    - **you might want to make a `kthw` directory on your laptop to hold all the certs your are going to create in lab 4**
-   - for the Kublet Client Certificates:
-      - run the code in the `for` loop to create csr.json files:
-      ```
+   - for the Kublet Client Certificates run the code in the `for` loop to create csr.json files:
+```
       for instance in worker-0 worker-1 worker-2; do
         cat > ${instance}-csr.json <<EOF
         {
