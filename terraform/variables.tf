@@ -4,27 +4,6 @@ variable "region" {
   default     = "us-west-2"
 }
 
-variable "aws_credentials_file" {
-  description = "file path to credentials"
-  type        = string
-  default     = "~/.aws/credentials"
-}
-
-variable "aws_profile" {
-  description = "aws profile credentials to use"
-  type        = string
-  default     = "default"
-}
-
-variable "default_tags" {
-  type = map(any)
-  default = {
-    Name : "kubernetes-the-hard-way"
-    Terraform : "true"
-    stage : "lab"
-  }
-}
-
 variable "ssh_hosts" {
   description = "list of hosts to allow ssh access"
   type        = list(string)
@@ -34,11 +13,13 @@ variable "ssh_hosts" {
 variable "key_name" {
   description = "name of the ssh key pair to assign to instances"
   type        = string
+  default     = "becki-test"
 }
 
 variable "public_key" {
   description = "public key of the key pair"
   type        = string
+  default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCBOlarv1TdyqUr+E6zaNc8NM1u+oKqFon1JDueVLejFX+nlXu81TJuBSQvLOFKt1TmqUKoLkFGaOtKpda23kbByhVGOxGDeK8f3YaceBX5EYIS6UbsuyniY39oRCj7K2+D/FD50o6VEdHdRJYPwHDFH7sJudJIz4SWNppMvjU8qkFsX2HCVi8hZajjreF+ZmOHKq6N3X53GXR3LfXNVVdkM4jAERiI4RNvDwuajxpd/Jk+UTMMgJNdHFXVZRNeOXhhz5LyW3CdLhsIAOsT8kYeW/o7YZ0ItspnXfhbhS38qEs3P2qtRig8w4qL7XjcXf3FFiCp0e8G6/kWqGnR91Qb"
 }
 
 variable "controller_ips" {

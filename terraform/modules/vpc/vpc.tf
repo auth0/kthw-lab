@@ -3,23 +3,17 @@ resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
-
-  tags = var.default_tags
 }
 
 # create subnet
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.main.id
   cidr_block = var.private_cidr
-
-  tags = var.default_tags
 }
 
 # create IGW
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
-
-  tags = var.default_tags
 }
 
 # create route table and associate IGW and subnet with it
@@ -30,8 +24,6 @@ resource "aws_route_table" "public" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
-
-  tags = var.default_tags
 }
 
 resource "aws_route_table_association" "nodes" {
@@ -78,7 +70,6 @@ resource "aws_security_group" "kube_external" {
   }
 
   tags = merge(
-    var.default_tags,
     {
       Name = "kubernetes-the-hard-way-allow-external"
     },
@@ -123,7 +114,6 @@ resource "aws_security_group" "kube_internal" {
   }
 
   tags = merge(
-    var.default_tags,
     {
       Name = "kubernetes-the-hard-way-allow-internal"
     },

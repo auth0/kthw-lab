@@ -17,9 +17,3 @@ variable "ssh_hosts" {
   description = "list of host IPs to allow SSH access"
   type        = list(string)
 }
-
-variable "default_tags" {
-  default     = {}
-  description = "default tags"
-  type        = map(string)
-}

@@ -31,7 +31,6 @@ resource "aws_instance" "kube_controller" {
 
 
   tags = merge(
-    var.default_tags,
     {
       Name = "kubernetes-the-hard-way-${each.key}"
     },
@@ -53,7 +52,6 @@ resource "aws_instance" "kube_worker" {
   associate_public_ip_address = true
 
   tags = merge(
-    var.default_tags,
     {
       Name = "kubernetes-the-hard-way-worker-${count.index}"
     },
