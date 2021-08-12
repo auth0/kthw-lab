@@ -1,7 +1,7 @@
 
 ## README  
 
-This is useful if you are studying for you CKA, and are wanting to use [Kubernetest The Hard Way (kthw) by Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-the-hard-way) on AWS instead of on GCP
+This is useful if you are studying for you CKA, and are wanting to use [Kubernetes The Hard Way (kthw) by Kelsey Hightower](https://github.com/kelseyhightower/kubernetes-the-hard-way) on AWS instead of on GCP
 
 This code deploys and configures the network infrastructure for doing the labs. It covers some or all of the steps required in labs 3 and 4.  
 
