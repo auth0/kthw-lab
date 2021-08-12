@@ -42,6 +42,6 @@ The network consists of:
 
 #### Save Money
 
-run `gk e -p security-dev terraform -destroy` when you are done working with your lab
+Run `gk e -p security-dev terraform -destroy` when you are done working with your lab. You can recreate the network when you're ready to go again.
 
 ## Happy Labing and Good Luck with the CKA!
