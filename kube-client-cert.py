@@ -24,7 +24,7 @@ def create_client_cert(worker):
 
 
 def get_instance_data(worker_names):
-    my_session = boto3.session.Session(region_name='us-west-2', profile_name='iac')
+    my_session = boto3.session.Session(region_name='us-west-2')
 
     ec2 = my_session.client('ec2')
 
