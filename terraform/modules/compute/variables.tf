@@ -27,9 +27,3 @@ variable "pod_ips" {
   description = "list of private IP addresses to pass to the worker nodes for pods"
   type        = list(string)
 }
-
-variable "default_tags" {
-  default     = {}
-  description = "default tags"
-  type        = map(string)
-}

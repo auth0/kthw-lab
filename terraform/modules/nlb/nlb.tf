@@ -9,8 +9,6 @@ resource "aws_lb" "nlb" {
   }
 
   enable_deletion_protection = false
-
-  tags = var.default_tags
 }
 
 # create target group for controllers
@@ -18,7 +16,7 @@ resource "aws_lb_target_group" "controllers" {
   target_type = "ip"
   port        = "6443"
   protocol    = "TCP"
-  vpc_id      = "vpc-0c08341e945820b05"
+  vpc_id      = var.vpc_id
 
   health_check {
     enabled  = true
