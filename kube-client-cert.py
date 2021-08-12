@@ -11,7 +11,7 @@ def create_client_cert(worker):
     hostname = '-hostname=' + instance + ',' + public_ip + ',' + private_ip
     csr_json = instance + '-csr.json | cfssljson -bare ' + instance
 
-    command = "cd /Users/becki/.ssh/kthw/ \n"
+    command = "cd ~/kthw/ \n"
     gen_cert = ( 
         "cfssl gencert -ca=ca.pem -ca-key=ca-key.pem "
         "-config=ca-config.json -profile=kubernetes"
