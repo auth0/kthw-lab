@@ -63,6 +63,7 @@ The network consists of:
       done
 ```
 1. Then run the `kube-client-cert.py` script to create the worker certs.
+1. Create the remaining certs in Lab 4.
 1. Follow the instructions in the remaining labs 
 
 #### Save Money
