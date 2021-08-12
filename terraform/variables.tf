@@ -7,7 +7,7 @@ variable "region" {
 variable "ssh_hosts" {
   description = "list of hosts to allow ssh access"
   type        = list(string)
-  default     = []
+  default     = ["68.115.96.100/32"]
 }
 
 variable "key_name" {
