@@ -30,10 +30,12 @@ The network consists of:
 1. Read [KTHW Lab 1](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/01-prerequisites.md). The tips on using tmux are very helpful.
 1. Install client tools in [KTHW Lab 2](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/02-client-tools.md) on your laptop.
 1. Update the main variables.tf with: 
-   - your SSH name
+   - your SSH key name
    - your SSH public key value
    - your external / public IP address to add to the SSH allow security group
-1. Run the terraform code after updating your variable values in the variables.tf file. This will cover [KTHW Lab 3](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/03-compute-resources.md). **Note the public IP address in the output. You'll need that later**.
+1. Run the terraform code after updating your variable values in the variables.tf file. 
+   - This will cover [KTHW Lab 3](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/03-compute-resources.md). 
+   - **Note the public IP address in the output. You'll need that later**.
    - verify that you can SSH to the public IP of the `controller-0` instance
 1. Follow the steps in [KTHW Lab 4](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md), but run the `kube-client-cert.py` script to install the client certificates.
 1. Follow the instructions in the remaining labs 
