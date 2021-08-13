@@ -30,10 +30,8 @@ def get_instance_data(worker_names):
 
     workers = []
 
-    worker_instance_tag = "kubernetes-the-hard-way-"
-
     for worker in worker_names:
-        tag = worker_instance_tag + worker
+        tag = worker
 
         response = ec2.describe_instances(
             Filters=[
