@@ -11,7 +11,7 @@ def create_client_cert(worker):
     hostname = '-hostname=' + instance + ',' + public_ip + ',' + private_ip
     csr_json = instance + '-csr.json | cfssljson -bare ' + instance
 
-    command = "cd /Users/becki/.ssh/kthw/ \n"
+    command = "cd ~/kthw/ \n"
     gen_cert = ( 
         "cfssl gencert -ca=ca.pem -ca-key=ca-key.pem "
         "-config=ca-config.json -profile=kubernetes"
@@ -24,16 +24,14 @@ def create_client_cert(worker):
 
 
 def get_instance_data(worker_names):
-    my_session = boto3.session.Session(region_name='us-west-2', profile_name='iac')
+    my_session = boto3.session.Session(region_name='us-west-2')
 
     ec2 = my_session.client('ec2')
 
     workers = []
 
-    worker_instance_tag = "kubernetes-the-hard-way-"
-
     for worker in worker_names:
-        tag = worker_instance_tag + worker
+        tag = worker
 
         response = ec2.describe_instances(
             Filters=[

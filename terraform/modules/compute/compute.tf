@@ -32,7 +32,7 @@ resource "aws_instance" "kube_controller" {
 
   tags = merge(
     {
-      Name = "kubernetes-the-hard-way-${each.key}"
+      Name = "${each.key}"
     },
   )
 }
@@ -53,7 +53,7 @@ resource "aws_instance" "kube_worker" {
 
   tags = merge(
     {
-      Name = "kubernetes-the-hard-way-worker-${count.index}"
+      Name = "worker-${count.index}"
     },
   )
 }

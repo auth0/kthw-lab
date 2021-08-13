@@ -5,6 +5,7 @@ provider "aws" {
       Name : "kubernetes-the-hard-way"
       Terraform : "true"
       stage : "lab"
+      owner: "becki"
     }
   }
 }
