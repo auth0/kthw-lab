@@ -109,7 +109,7 @@ done
 
 ### Remaining Labs
 
-You should be able to follow the instructions for the rest of the labs
+You should be able to follow the instructions for the rest of the labs by using SSH to connect to the nodes.
 
 ## Save Money
 
