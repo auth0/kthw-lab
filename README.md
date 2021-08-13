@@ -38,7 +38,7 @@ The network consists of:
    - **Note the public IP address in the output. You'll need that later**.
    - verify that you can SSH to the public IP of the `controller-0` instance
 1. Follow the steps in [KTHW Lab 4](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md), 
-   - **you might want to make a `kthw` directory on your laptop to hold all the certs your are going to create in lab 4**
+   - **you might want to make a `kthw` directory on your laptop to hold all the certs you are going to create in lab 4**
    - for the Kublet Client Certificates run the code in the `for` loop to create csr.json files:
 ```
       for instance in worker-0 worker-1 worker-2; do
@@ -63,7 +63,22 @@ The network consists of:
       done
 ```
 1. Then run the `kube-client-cert.py` script to create the worker certs.
-1. Create the remaining certs in Lab 4.
+1. Create the remaining certs in Lab 4 until you get to the Distribute Client and Server Certs Step. You can use the following commands after updating to use your SSH key name, and assuming you put your certs in your `~/kthw` directory
+```
+
+for instance in worker-0 worker-1 worker-2; do
+    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
+    scp -o user=ubuntu -i ~/.ssh/becki-test.pem ~/kthw/ca.pem ~/kthw/${instance}-key.pem ~/kthw/${instance}.pem $ip:~/
+done
+
+
+for instance in controller-0 controller-1 controller-2; do
+    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
+    scp -o user=ubuntu -i ~/.ssh/becki-test.pem ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem \
+    service-account-key.pem service-account.pem $ip:~/
+done
+
+```
 1. Follow the instructions in the remaining labs 
 
 #### Save Money
