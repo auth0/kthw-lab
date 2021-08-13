@@ -51,31 +51,17 @@ The network consists of:
 
 1. Follow the steps in [KTHW Lab 4](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md), 
 1. Make a `~/kthw` directory on your laptop to hold all the certs you are going to create
-   - for the Kublet Client Certificates run the code in the `for` loop to create csr.json files:
-```
-      for instance in worker-0 worker-1 worker-2; do
-        cat > ${instance}-csr.json <<EOF
-        {
-        "CN": "system:node:${instance}",
-        "key": {
-            "algo": "rsa",
-            "size": 2048
-        },
-        "names": [
-            {
-            "C": "US",
-            "L": "Portland",
-            "O": "system:nodes",
-            "OU": "Kubernetes The Hard Way",
-            "ST": "Oregon"
-            }
-        ]
-        }
-        EOF
-      done
-```
+1. Make all the certificates in the lab except until you get to the Kubelet Client Certificates
+
+#### Kubelet Client Certificates
+
+1. Run the code in the `for` loop to create the worker -csr.json files
 1. Then run the `kube-client-cert.py` script to create the worker certs.
-1. Create the remaining certs in Lab 4 until you get to the Distribute Client and Server Certs Step. You can use the following commands after updating to use your SSH key name, and the value for the owner tag you used in your Terraform code. This assumes you put your certs in your `~/kthw` directory
+1. Create the remaining certs in Lab 4 until you get to the Distribute Client and Server Certs Step. 
+
+#### Distribute the Client and Server Certificates
+
+You can use the following commands after updating to use your SSH key name, and the value for the owner tag you used in your Terraform code. This assumes you put your certs in your `~/kthw` directory
 ```
 key="~/.ssh/becki-test.pem"
 owner="becki"
