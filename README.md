@@ -113,6 +113,6 @@ You should be able to follow the instructions for the rest of the labs by using 
 
 ## Save Money
 
-Run `gk e -p security-dev terraform -destroy` when you are done working with your lab. You can recreate the network and start with Lab 4 when you're ready to go again.
+Run `gk e -p security-dev terraform destroy` when you are done working with your lab. You can recreate the network and start with Lab 4 when you're ready to go again.
 
 ## Happy Labing and Good Luck with the CKA!
