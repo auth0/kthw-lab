@@ -49,8 +49,8 @@ The network consists of:
 
 ### Lab 4
 
-1. Follow the steps in [KTHW Lab 4](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md), 
 1. Make a `~/kthw` directory on your laptop to hold all the certs you are going to create
+1. Follow the steps in [KTHW Lab 4](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/04-certificate-authority.md), 
 1. Make all the certificates in the lab except until you get to the Kubelet Client Certificates
 
 #### Kubelet Client Certificates
