@@ -77,7 +77,7 @@ for instance in controller-0 controller-1 controller-2; do
     service-account-key.pem service-account.pem $ip:~/
 done
 ```
-1. Follow the instructions in the remaining labs 
+1. Follow the instructions in the remaining labs **the public address for Lab 5 can be found in the Terraform output**
 
 #### Save Money
 
