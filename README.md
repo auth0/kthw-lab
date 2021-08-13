@@ -75,17 +75,19 @@ The network consists of:
       done
 ```
 1. Then run the `kube-client-cert.py` script to create the worker certs.
-1. Create the remaining certs in Lab 4 until you get to the Distribute Client and Server Certs Step. You can use the following commands after updating to use your SSH key name, and assuming you put your certs in your `~/kthw` directory
+1. Create the remaining certs in Lab 4 until you get to the Distribute Client and Server Certs Step. You can use the following commands after updating to use your SSH key name, and the value for the owner tag you used in your Terraform code. This assumes you put your certs in your `~/kthw` directory
 ```
+key="~/.ssh/becki-test.pem"
+owner="becki"
 for instance in worker-0 worker-1 worker-2; do
-    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
-    scp -o user=ubuntu -i ~/.ssh/becki-test.pem ~/kthw/ca.pem ~/kthw/${instance}-key.pem ~/kthw/${instance}.pem $ip:~/
+    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" "Name=tag:owner,Values=${owner}"  | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
+    scp -o user=ubuntu -i ${key} ~/kthw/ca.pem ~/kthw/${instance}-key.pem ~/kthw/${instance}.pem $ip:~/
 done
 
 
 for instance in controller-0 controller-1 controller-2; do
     ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
-    scp -o user=ubuntu -i ~/.ssh/becki-test.pem ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem \
+    scp -o user=ubuntu -i ${key} ca.pem ca-key.pem kubernetes-key.pem kubernetes.pem \
     service-account-key.pem service-account.pem $ip:~/
 done
 ```
@@ -96,13 +98,13 @@ done
 1. Follow the instructions in [Lab 5](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/05-kubernetes-configuration-files.md) until the last step. You can use this code to Distribute the Kubernetes Files
 ```
 for instance in worker-0 worker-1 worker-2; do
-    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
-    scp -o user=ubuntu -i ~/.ssh/becki-test.pem ${instance}.kubeconfig kube-proxy.kubeconfig $ip:~/
+    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" "Name=tag:owner,Values=${owner}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
+    scp -o user=ubuntu -i ${key} ${instance}.kubeconfig kube-proxy.kubeconfig $ip:~/
 done
 
 for instance in controller-0 controller-1 controller-2; do
-    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
-    scp -o user=ubuntu -i ~/.ssh/becki-test.pem admin.kubeconfig kube-controller-manager.kubeconfig kube-scheduler.kubeconfig $ip:~/
+    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" "Name=tag:owner,Values=${owner}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
+    scp -o user=ubuntu -i ${key} admin.kubeconfig kube-controller-manager.kubeconfig kube-scheduler.kubeconfig $ip:~/
 done
 ```
 
@@ -112,8 +114,8 @@ done
 1. Code to copy the encryption key to the controller nodes
 ```
 for instance in controller-0 controller-1 controller-2; do
-    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
-    scp -o user=ubuntu -i ~/.ssh/becki-test.pem encryption-config.yaml $ip:~/
+    ip=`gk e -p security-dev -- aws ec2 describe-instances --filters "Name=tag:Name,Values=${instance}" "Name=tag:owner,Values=${owner}" | jq -r '.[] | .[0].Instances[0].PublicIpAddress'`
+    scp -o user=ubuntu -i ${key} encryption-config.yaml $ip:~/
 done
 ```
 
