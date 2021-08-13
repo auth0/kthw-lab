@@ -24,6 +24,8 @@ The network consists of:
    - pod-1: 10.200.1.0/24
    - pod-2: 10.200.2.0/24 
 
+* Each AWS resource created will be tagged with the owner tag defined in the Terrafrom main.tf default tag. The scripts below reference that tag when looking for the resources to configure in the labs.
+
 ## KTHW Labs
 
 1. Clone this repo and make a branch for yourself - or fork it
@@ -107,7 +109,7 @@ done
 
 ### Remaining Labs
 
-You should be able to follow the instructions for the rest of the labs
+You should be able to follow the instructions for the rest of the labs by using SSH to connect to the nodes.
 
 ## Save Money
 
