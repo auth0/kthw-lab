@@ -11,15 +11,15 @@ The idea is to be able to save time setting up the VPC, remote access, firewall 
 
 The network consists of:
 
-* 3 control nodes ips:
+* 3 control nodes IPs:
    - controller-0: 10.240.0.10
    - controller-1: 10.240.0.11
    - controller-2: 10.240.0.12
-* 3 worker nodes ips: 
+* 3 worker nodes IPs: 
    - worker-0: 10.240.0.20
    - worker-1: 10.240.0.21
    - worker-2: 10.240.0.22
-* 3 pods ips: 
+* 3 pods IPs: 
    - pod-0: 10.200.0.0/24
    - pod-1: 10.200.1.0/24
    - pod-2: 10.200.2.0/24 
@@ -44,6 +44,7 @@ The network consists of:
    - your SSH key name
    - your SSH public key value
    - your external / public IP address to add to the SSH allow security group
+1. Update the default tags in the main.tf file
 1. Run the terraform code after updating your variable values in the variables.tf file. 
    - This will cover [KTHW Lab 3](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/master/docs/03-compute-resources.md). 
    - **Note the public IP address in the output. You'll need that later**.
